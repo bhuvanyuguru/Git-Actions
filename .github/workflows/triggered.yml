@@ -1,0 +1,27 @@
+name: Artifact Download
+
+on:
+  workflow_dispatch:      # Can be manually triggered too
+  workflow_run:
+    workflows: ["Java Build and Artifact Upload"]
+    types:
+      - completed          # Trigger only after previous workflow completes
+
+jobs:
+  download-artifact:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout repository
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Download artifact
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: java-artifacts
+
+      # Verify downloaded artifact
+      - name: List downloaded files
+        run: ls -l
