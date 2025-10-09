@@ -63,6 +63,13 @@ jobs:
           git commit -m "Upload artifacts from run ${{ github.run_number }}" || echo "No changes to commit"
           git push origin ${{ env.ARTIFACT_BRANCH }}
 
+      - name: Upload Java artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: java-artifacts
+          path: demo/target/*.jar
+
+
       # Trigger the next pipeline
       # - name: Trigger Artifact Download Workflow
       #   uses: benc-uk/workflow-dispatch@v1
