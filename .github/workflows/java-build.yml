@@ -64,9 +64,9 @@ jobs:
           git push origin ${{ env.ARTIFACT_BRANCH }}
 
       # Trigger the next pipeline
-      - name: Trigger Artifact Download Workflow
-        uses: benc-uk/workflow-dispatch@v1
-        with:
-          workflow: artifact-download.yml
-          ref: main
-          token: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Trigger Artifact Download Workflow
+      #   uses: benc-uk/workflow-dispatch@v1
+      #   with:
+      #     workflow: artifact-download.yml
+      #     ref: main
+      #     token: ${{ secrets.GITHUB_TOKEN }}
