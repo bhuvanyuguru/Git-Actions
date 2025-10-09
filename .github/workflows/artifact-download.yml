@@ -1,7 +1,7 @@
 name: Artifact Download
 
 on:
-  workflow_dispatch:      # Can be manually triggered too
+  workflow_dispatch:      # Manual trigger
   workflow_run:
     workflows: ["Java Build and Artifact Upload"]
     types:
@@ -12,16 +12,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout repository
-      - name: Checkout Code
+      # Checkout the artefacts-store branch
+      - name: Checkout artefacts-store branch
         uses: actions/checkout@v4
+        with:
+          ref: artefacts-store
 
-      # Download artifact
+      # Download artifact (from previous workflow)
       - name: Download Build Artifact
         uses: actions/download-artifact@v4
         with:
           name: java-artifacts
+          path: artefacts/    # optional: where to store the jar
 
-      # Verify downloaded artifact
+      # Verify downloaded files
       - name: List downloaded files
-        run: ls -l
+        run: ls -R artefacts/
