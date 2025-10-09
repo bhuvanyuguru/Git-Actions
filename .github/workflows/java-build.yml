@@ -44,11 +44,12 @@ jobs:
         working-directory: ./demo
 
       # Upload build artifacts from demo/target/
-      - name: Upload Build Artifacts
+      - name: Upload a Build Artifact
         uses: actions/upload-artifact@v4
         with:
           name: java-artifacts.jar
-          path: demo/target/*.jar
+          path: ./demo/target
+          retention-days: 1
 
       # Push artifacts to another branch for persistence
       - name: Push Artifacts to artefacts-store Branch
