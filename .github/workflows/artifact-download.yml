@@ -19,13 +19,15 @@ jobs:
           ref: artefacts-store
 
 
-      - name: Download artifact from another workflow
+      - name: Download artifact from previous workflow
         uses: dawidd6/action-download-artifact@v3
         with:
-          workflow: 'Java Build and Artifact Upload'
+          workflow: java-build-and-artifact-upload.yml   # YAML file name
           workflow_conclusion: success
           name: java-artifacts
           path: artefacts/
+          branch: artefacts-store
+
 
 
       # # Download artifact (from previous workflow)
