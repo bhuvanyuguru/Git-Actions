@@ -24,7 +24,7 @@ jobs:
         with:
           workflow: java-build-and-artifact-upload.yml   # YAML file name
           workflow_conclusion: success
-          name: java-artifacts
+          name: java-artifacts.jar
           path: artefacts/
           branch: artefacts-store
 
