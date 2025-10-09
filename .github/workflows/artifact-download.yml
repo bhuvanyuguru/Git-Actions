@@ -20,7 +20,7 @@ jobs:
       - name: Download Build Artifact
         uses: actions/download-artifact@v4
         with:
-          name: java-artifacts
+          name: java-artifacts.jar
 
       # Verify downloaded artifact
       - name: List downloaded files
