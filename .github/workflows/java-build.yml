@@ -50,7 +50,7 @@ jobs:
           git push origin ${{ env.ARTIFACT_BRANCH }}
 
       - name: Trigger Artifact Download Workflow
-        uses: peter-evans/workflow-dispatch@v1
+        uses: benc-uk/workflow-dispatch@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           workflow: artifact-download.yml
