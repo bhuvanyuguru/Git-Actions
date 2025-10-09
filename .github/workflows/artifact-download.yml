@@ -18,11 +18,15 @@ jobs:
         with:
           ref: artefacts-store
 
+
       - name: Download artifact from another workflow
         uses: dawidd6/action-download-artifact@v3
         with:
+          workflow: 'Java Build and Artifact Upload'
+          workflow_conclusion: success
           name: java-artifacts
           path: artefacts/
+
 
       # # Download artifact (from previous workflow)
       # - name: Download Build Artifact
