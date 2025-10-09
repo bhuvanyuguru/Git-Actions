@@ -21,8 +21,7 @@ jobs:
       # Download the latest artifact from the triggering workflow run
       - name: Download Build Artifact
         uses: actions/download-artifact@v4
-        with:
-          name: demo-0.0.1-SNAPSHOT       # Artifact name from the previous workflow
+        with:     
           path: artefacts/           # Folder where the artifact will be stored
 
       # List downloaded files for verification
