@@ -1,11 +1,11 @@
 name: Artifact Download
 
 on:
-  workflow_dispatch:      # Manual trigger
   workflow_run:
     workflows: ["Java Build and Artifact Upload"]
     types:
-      - completed          # Trigger only after previous workflow completes
+      - completed  # Trigger only after the previous workflow completes successfully
+  workflow_dispatch:  # Optional manual trigger
 
 jobs:
   download-artifact:
@@ -18,13 +18,13 @@ jobs:
         with:
           ref: artefacts-store
 
-       # Download artifact (from previous workflow)
+      # Download the latest artifact from the triggering workflow run
       - name: Download Build Artifact
         uses: actions/download-artifact@v4
         with:
-          name: java-artifacts
-          path: artefacts/    # optional: where to store the jar
+          name: java-artifacts       # Artifact name from the previous workflow
+          path: artefacts/           # Folder where the artifact will be stored
 
-      # Verify downloaded files
+      # List downloaded files for verification
       - name: List downloaded files
         run: ls -R artefacts/
