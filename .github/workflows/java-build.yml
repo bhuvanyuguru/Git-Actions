@@ -59,7 +59,9 @@ jobs:
 
       # Trigger the next pipeline
       - name: Trigger Artifact Download Workflow
-        uses: peter-evans/workflow-dispatch@v3
+        uses: peter-evans/workflow-dispatch@v1
         with:
           workflow: artifact-download.yml
           ref: main
+          token: ${{ secrets.GITHUB_TOKEN }}
+
