@@ -47,7 +47,7 @@ jobs:
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: java-artifacts.jar
+          name: java-artifacts
           path: ./demo/target
           retention-days: 1
 
@@ -59,7 +59,7 @@ jobs:
           git fetch origin ${{ env.ARTIFACT_BRANCH }}
           git checkout ${{ env.ARTIFACT_BRANCH }}
           mkdir -p artefacts
-          cp demo/target/*.jar artefacts/java-artifacts.jar
+          cp demo/target/*.jar artefacts/java-artifacts
           git add artefacts/
           git commit -m "Upload artifacts from run ${{ github.run_number }}" || echo "No changes to commit"
           git push origin ${{ env.ARTIFACT_BRANCH }}
