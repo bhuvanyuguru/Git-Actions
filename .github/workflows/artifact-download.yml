@@ -18,24 +18,12 @@ jobs:
         with:
           ref: artefacts-store
 
-
-      - name: Download artifact from previous workflow
-        uses: dawidd6/action-download-artifact@v3
+       # Download artifact (from previous workflow)
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v4
         with:
-          workflow: java-build-and-artifact-upload.yml   # YAML file name
-          workflow_conclusion: success
-          name: java-artifacts.jar
-          path: artefacts/
-          branch: artefacts-store
-
-
-
-      # # Download artifact (from previous workflow)
-      # - name: Download Build Artifact
-      #   uses: actions/download-artifact@v4
-      #   with:
-      #     name: java-artifacts
-      #     path: artefacts/    # optional: where to store the jar
+          name: java-artifacts
+          path: artefacts/    # optional: where to store the jar
 
       # Verify downloaded files
       - name: List downloaded files
